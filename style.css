@@ -1,0 +1,36 @@
+
+body{
+    background-image: url("images/greencode.jpg");
+}
+
+body, .container-fluid, .col-md-3,.col-md-6, .row{
+    margin: 0;
+    padding: 0;
+}
+
+.highscore, .timeremain{
+    font-size: 2vw;
+    color: white;
+}
+.timer{
+    font-size: 2vw;
+    color: white;
+}
+
+.background{
+    margin-top: 6vh;
+    background: green;
+    height: fit-content;
+    padding: 2vw;
+}
+
+.landingpage{
+    color: white;
+}
+
+.testpage{
+    color: white;
+}
+.initialspage{
+    color: white;
+}
