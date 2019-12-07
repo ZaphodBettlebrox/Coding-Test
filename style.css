@@ -31,6 +31,22 @@ body, .container-fluid, .col-md-3,.col-md-6, .row{
 .testpage{
     color: white;
 }
+
 .initialspage{
     color: white;
+}
+
+.resultspage{
+    color: white;
+}
+
+.btn-style{
+    margin-left: 100px;
+    margin-bottom: 15px;
+    margin-top: 22px;
+background: white;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 25px;
+padding-right: 25px;
 }

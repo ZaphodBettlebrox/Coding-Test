@@ -1,109 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Coding Test</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Coding Test</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- creat box for all the text to be stored in and header with a view highscores button anda time remaining. -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-2">
+          <h1 class="highscore ">
+            Highscores
+          </h1>
+        </div>
 
-</head>
-<body>
-  
+        <div class="col-sm-8"></div>
 
-<!-- creat box for all the text to be stored in and header with a view highscores button anda time remaining. -->
-<div class="container-fluid">
+        <div class="col-sm-1.5">
+          <h1 class="timeremain">
+            Time Remaining
+          </h1>
+          <div class="timer"></div>
+        </div>
+      </div>
 
-  
-  <div class="row">
+      <div class="row">
+        <div class="col-md-3"></div>
 
-    <div class="col-sm-2">
-      <h1 class="highscore ">
-        Highscores
-      </h1>
-    </div>
+        <div class="col-md-6">
+          <div class="background">
+            <div class="landingpage">
+              <div class="row">
+                <h1>
+                  Coding Quiz Challenge
+                </h1>
+                <p>
+                  This is a coding quiz to test your stills at coding! To start
+                  the quiz, go ahead and press the "Start Quiz" button, you will
+                  be presented with a series of questions. The timer in the top
+                  right will begin to countdown. If you guess wrong, the timer
+                  will have 15 seconds subtracted. When the timer runs out
+                  and/or the questions are answered, you will be presented with
+                  your final score.
+                </p>
+                <button id="startquiz" type="submit">Start Quiz</button>
+              </div>
+            </div>
 
-    <div class="col-sm-8">
-    </div>
+            <div class="testpage">
+              <div class="row">
+                <h1>
+                  Coding Quiz:
+                </h1>
+              </div>
+              <div class="row">
+                <p class="questiontitle"></p>
+                <ul class="questionchoices"></ul>
+              </div>
 
-    <div class="col-sm-1.5">
-      <h1 class="timeremain">
-        Time Remaining  
-      </h1>
-      <div class="timer"></div>>
-    </div>
+              <div class="row">
+                <button id="nextquiz" type="button">Next Question</button>
+              </div>
+            </div>
 
-  </div>
+            <div class="initialspage">
+              <div class="row">
+                <h1>
+                  Congratulations! Please enter your initials:
+                </h1>
+                <br />
+                <form>
+                  <div class="row">
+                    <div class="form-group">
+                      <br />
+                      <input
+                        class="form-control"
+                        id="initials"
+                        placeholder="Inititals Here"
+                      />
+                    </div>
 
-  <div class="row">
-    <div class="col-md-3">
-    </div>
+                    <button
+                      type="button"
+                      class="btn btn-style"
+                      id="submitInitials"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
 
-    <div class="col-md-6">
-      <div class="background">
-
-        <div class="landingpage">
-          <div class="row">
-            <h1>
-              Coding Quiz Challenge
-            </h1>
-            <p>
-              This is a coding quiz to test your stills at coding! To start the quiz, go ahead and press the "Start Quiz" button, you will be presented with a series of questions. The timer in the top right will begin to countdown. If you guess wrong, the timer will have 15 seconds subtracted. When the timer runs out and/or the questions are answered, you will be presented with your final score.
-            </p>
-            <button id="startquiz" type="submit">Start Quiz</button>
+            <div class="resultspage">
+              <div class="row">
+                <h1>
+                  Coding Quiz Highscores:
+                </h1>
+                <p class="results"></p>
+                <br />
+                <br />
+                <button id="resetquiz" type="submit">Reset Quiz</button>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="testpage" >
-            <div class="row" >
-              <h1>
-                Coding Quiz:
-              </h1>
-            </div>
-            <div class="row">
-
-              <p class="questiontitle">
-              </p>
-              <ul class="questionchoices"></ul>
-            </div>
-
-            <div class="row">
-              <button id="nextquiz" type="button">Next Question</button>
-            </div>
-            
-        </div>
-
-        <div class="initialspage">
-            <div class="row">
-              <h1>
-                Congratulations! Please enter your initials:
-              </h1>
-              <p class="initials">
-              </p>
-            </div> 
-        </div>
-
-        <div class="resultspage">
-            <div class="row">
-              <h1>
-                Coding Quiz Results:
-              </h1>
-              <p class="results">
-              </p>
-            </div>
-        </div>
-
       </div>
-    </div>
-  </div>
 
+      <!-- make responcive to screen sizes -->
 
-
-
-<!-- make responcive to screen sizes -->
-
-<!-- ## Minimum Requirements
+      <!-- ## Minimum Requirements
 
 * Functional, deployed application.
 
@@ -130,11 +145,23 @@
 * Create multiple quizzes and an option for users to choose between them.
 
 * Add the application to your portfolio. -->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <script src="JavaScript.js"></script>
-  <script src="questions.js"></script>
-</div>
-</body>
+      <script
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"
+      ></script>
+      <script src="JavaScript.js"></script>
+      <script src="questions.js"></script>
+    </div>
+  </body>
 </html>
