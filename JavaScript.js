@@ -1,8 +1,7 @@
 //Left to do:
-//save scores
-// save initials
-//say correct or incorect and -score if wrong
-//pull a list from local storage of all scores
+//say correct or incorect and -score if wrong (line 134)
+//pull a list from local storage of all scores (line 161)
+// fix radioRemoved on (119)
 
 var timer = document.querySelector(".timer");
 var highscore = document.querySelector(".highscore");
@@ -31,8 +30,6 @@ var name = initials.textContent;
 
 var answertext;
 var choicetext;
-// var storeData=timer.textContent;
-// var countdown;
 
 // <!-- pressing start quiz start questions and starts timer. -->
 
@@ -40,9 +37,6 @@ testpge.style.display = "none";
 resultspge.style.display = "none";
 initialspge.style.display = "none";
 
-// function answer() {
-// if(answer=)
-// }
 
 highscore.addEventListener("click", function() {
   resultspge.style.display = "inline";
@@ -99,65 +93,65 @@ function populateQuestion() {
     }
     
   }
-  console.log(allQuestions[i].answer);
-
 }
 
 function createLi(choiceText) {
   var e = document.createElement("li");
   var radioHtml = '<input type="radio" name="choice"/>';
+  
+  
+  
+
   radioHtml += choiceText;
   e.innerHTML = radioHtml;
 
-  console.log(radioHtml);
+  radioRemoved =radioHtml.replace('<input type="radio" name="choice"/>', '');
+  
+  // console.log(radioRemoved);
+  console.log(allQuestions[i].answer);
+  console.log(document.querySelector(".questionchoices").textContent);
   
 
   return e;
 }
 
 nextQuiz.addEventListener("click", function() {
-  var radios = document.getElementsByName("choice");
-  var r = 0, len = radios.length;
-  var checked = false;
-  var userAnswer;
 
-  console.log(allQuestions[i].answer);
-  
-  
-  
+
+  // var radios = radioRemoved;
+  var r = 0, len = radioRemoved.length;
+  var checked = false;  
   
   for( ; r < len; r++ ) {
      if(radios[r].checked) {
        checked = true;
-       userAnswer = radios[r].value;
+       var userAnswer = radioRemoved;
      }
   } 
   // if user click submit button without selecting any option, alert box should be say "please select choice answer".
   if(!checked) {
     alert("please select choice answer");
+    secondsLeft--;
     return;
   }
   // Correct answer
   if(userAnswer === allQuestions[i].answer) {
      alert("Answer is correct!");
-    //  populateQuestion()
-    //  i++
+    
 
   }
   // incorrect answer
   else {
      alert("Answer is wrong!");
-    //  populateQuestion()
-    // i++
+     secondsLeft--;
+    
 }})
 
-
-
-// nextQuiz.addEventListener("click", function() {
-//   console.log("next Quiz");
-//   populateQuestion(i);
-//   i++;
-// });
+nextQuiz.addEventListener("click", function() {
+  console.log("next Quiz");
+  populateQuestion(i);
+  i++;
+});
 
 function populateinitials() {
   testpge.style.display = "none";
@@ -166,17 +160,27 @@ function populateinitials() {
 }
 
 initialsButton.addEventListener("click", function() {
-  console.log(name);
+  var username = document.getElementById('initials').value;
+  var StorageScore = username +" score";
+  var StorageUsername = username +" username";
+  
+  localStorage.setItem(StorageScore, JSON.stringify(timer.textContent));
+  localStorage.setItem(StorageUsername, JSON.stringify(username));
 
-  localStorage.setItem("score", JSON.stringify(timer.textContent));
-
-  console.log("submit results");
   populateResults();
 });
 
 function populateResults() {
+  // var SScorePull, SUsernamePull;
+
   initialspge.style.display = "none";
   resultspge.style.display = "inline";
+
+  // var SScorePull = localStorage.getItem('StorageScore');
+  // SScorePull = JSON.parse(StorageScore)
+  // var SUsernamePull = localStorage.getItem('StorageUsername');
+  // SUsernamePull = JSON.parse(StorageUsername)
+ 
 }
 
 resetQuiz.addEventListener("click", function() {
