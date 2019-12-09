@@ -1,7 +1,8 @@
 //Left to do:
-//save highscores
-// save name
-//say correct or incorect and -score if wrong.
+//save scores
+// save initials
+//say correct or incorect and -score if wrong
+//pull a list from local storage of all scores
 
 var timer = document.querySelector(".timer");
 var highscore = document.querySelector(".highscore");
@@ -24,8 +25,12 @@ var secondsLeft = 60;
 timer.style.visibility = "hidden";
 highscore.style.visibility = "visible";
 timer.textContent = "60";
-var score=timer.textContent;
+var score = timer.textContent;
 var name = initials.textContent;
+
+
+var answertext;
+var choicetext;
 // var storeData=timer.textContent;
 // var countdown;
 
@@ -59,25 +64,22 @@ function prepquestions() {
 }
 
 function countdownTimer() {
-
   countdown = setInterval(function() {
     secondsLeft--;
     timer.textContent = secondsLeft;
     // <!-- When time runs out/questions are answered the quiz ends. -->
 
     if (i > allQuestions.length) {
-      console.log("score "+timer.textContent);
+      console.log("score " + timer.textContent);
       clearInterval(countdown);
-      
+
       populateinitials();
-      
     }
 
     if (secondsLeft === 0) {
-      console.log("score "+timer.textContent);
+      console.log("score " + timer.textContent);
       clearInterval(countdown);
       populateinitials();
-      
     }
   }, 1000);
 
@@ -92,53 +94,85 @@ function populateQuestion() {
 
     selectionList.innerHTML = "";
     for (key in individualQuestion.choices) {
-      var radioBtnName = "question" + i + "choice";
       var choiceText = individualQuestion.choices[key];
-      selectionList.appendChild(createLi(radioBtnName, choiceText));
+      selectionList.appendChild(createLi(choiceText));
     }
+    
   }
+  console.log(allQuestions[i].answer);
+
 }
 
-function createLi(name, choiceText) {
+function createLi(choiceText) {
   var e = document.createElement("li");
-  var radioHtml = '<input type="radio" name="' + name + '"';
-  radioHtml += "/>";
+  var radioHtml = '<input type="radio" name="choice"/>';
   radioHtml += choiceText;
   e.innerHTML = radioHtml;
 
-  // console.log(choiceText);
+  console.log(radioHtml);
+  
+
   return e;
 }
 
-// nextQuiz.addEventListener("click", function() {
-  
-//   console.log(choiceText);
-// })
-
-
 nextQuiz.addEventListener("click", function() {
-  console.log("next Quiz");
-  populateQuestion(i);
-  i++;
-});
+  var radios = document.getElementsByName("choice");
+  var r = 0, len = radios.length;
+  var checked = false;
+  var userAnswer;
+
+  console.log(allQuestions[i].answer);
+  
+  
+  
+  
+  for( ; r < len; r++ ) {
+     if(radios[r].checked) {
+       checked = true;
+       userAnswer = radios[r].value;
+     }
+  } 
+  // if user click submit button without selecting any option, alert box should be say "please select choice answer".
+  if(!checked) {
+    alert("please select choice answer");
+    return;
+  }
+  // Correct answer
+  if(userAnswer === allQuestions[i].answer) {
+     alert("Answer is correct!");
+    //  populateQuestion()
+    //  i++
+
+  }
+  // incorrect answer
+  else {
+     alert("Answer is wrong!");
+    //  populateQuestion()
+    // i++
+}})
+
+
+
+// nextQuiz.addEventListener("click", function() {
+//   console.log("next Quiz");
+//   populateQuestion(i);
+//   i++;
+// });
 
 function populateinitials() {
   testpge.style.display = "none";
   initialspge.style.display = "inline";
   timer.style.visibility = "hidden";
-} 
+}
 
 initialsButton.addEventListener("click", function() {
   console.log(name);
-  
-  localStorage.setItem('score', JSON.stringify(timer.textContent));
 
-  
+  localStorage.setItem("score", JSON.stringify(timer.textContent));
+
   console.log("submit results");
   populateResults();
 });
-
-
 
 function populateResults() {
   initialspge.style.display = "none";
@@ -149,13 +183,12 @@ resetQuiz.addEventListener("click", function() {
   console.log("reset quiz");
   resultspge.style.display = "none";
   i = 0;
-  secondsLeft = 20;
-  timer.textContent = "20";
-  console.log("time remaining "+secondsLeft);
-  
+  secondsLeft = 60;
+  timer.textContent = "60";
+  console.log("time remaining " + secondsLeft);
+
   landingpge.style.display = "inline";
   highscore.style.visibility = "visible";
-
 });
 
 // <!-- Score: calculated by time remaining. Wrong answer decreases the score by a number of seconds (like 15) -->
