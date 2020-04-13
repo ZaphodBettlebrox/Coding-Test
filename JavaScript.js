@@ -19,6 +19,9 @@ var initialsButton = document.querySelector("#submitInitials");
 var resetQuiz = document.querySelector("#resetquiz");
 var initials = document.getElementById("initials");
 
+var newNameLine = document.querySelector(".newname")
+var newScoreLine = document.querySelector(".newscore")
+
 var i = 0;
 var secondsLeft = 60;
 timer.style.visibility = "hidden";
@@ -143,7 +146,7 @@ nextQuiz.addEventListener("click", function() {
   // incorrect answer
   else {
      alert("Answer is wrong!");
-     secondsLeft--;
+     secondsLeft= secondsLeft-15;
     
 }})
 
@@ -175,6 +178,16 @@ function populateResults() {
 
   initialspge.style.display = "none";
   resultspge.style.display = "inline";
+
+  for (let i = 0; i < localStorage.length; i++) {
+    var newName = document.createElement('h3');
+    var newScore = document.createElement('h3');
+    newName.textContent = localStorage.getItem(`StorageScore${i}`);
+    newScore.textContent = localStorage.getItem(`StorageUsername${i}`);
+
+    newNameLine.appendChild(newName);
+    newScoreLine.appendChild(newScore);
+  }
 
   // var SScorePull = localStorage.getItem('StorageScore');
   // SScorePull = JSON.parse(StorageScore)
